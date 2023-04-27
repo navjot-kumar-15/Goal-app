@@ -9,7 +9,7 @@ Viewing completed goals
 Tech Stack:-
 React.js
 Redux Toolkit
-React Router
+React-Router-Dom
 MongoDB
 Node.js
 Express
