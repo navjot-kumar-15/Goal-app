@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { updateGoalData } from "../features/goal/goalSlice";
+import Spinner from "./Spinner";
 function EditGoal() {
   const { id } = useParams();
-  const { goals, isSuccess } = useSelector((state) => state.goals);
+  const { goals, isSuccess, isLoading } = useSelector((state) => state.goals);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
     dispatch(updateGoalData(data));
     navigate("/");
     toast.success("Goal updated successfully");
@@ -32,6 +32,7 @@ function EditGoal() {
 
   return (
     <>
+      {isLoading && <Spinner />}
       <div className="goal">
         <div>{new Date(data?.createdAt).toLocaleString("en-us")}</div>
         <input
@@ -50,15 +51,34 @@ function EditGoal() {
           onChange={onHandleChange}
         />
 
-        <Link>
-          <button
-            className="btn"
-            style={{ margin: "0 auto" }}
-            onClick={handleSubmit}
-          >
-            Update
-          </button>
-        </Link>
+        <div
+          className="button "
+          style={{ display: "flex", gap: ".5rem", justifyContent: "center" }}
+        >
+          <Link>
+            <button
+              className="btn"
+              style={{ margin: "0 auto" }}
+              onClick={handleSubmit}
+            >
+              Update
+            </button>
+          </Link>
+
+          <Link to="/">
+            <button
+              className="btn "
+              style={{
+                margin: "0 auto",
+                backgroundColor: "green",
+                border: "none",
+                outline: "none",
+              }}
+            >
+              Back
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );
