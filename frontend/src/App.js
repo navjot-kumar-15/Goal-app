@@ -20,7 +20,18 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/:id" element={<EditGoal />} />
           </Routes>
-          <ToastContainer />
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
         </BrowserRouter>
       </div>
     </>

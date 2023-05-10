@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createGoal } from "../features/goal/goalSlice";
+import { toast } from "react-toastify";
 
 function GoalForm() {
   const [text, setText] = useState("");
@@ -9,6 +10,7 @@ function GoalForm() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(createGoal({ text }));
+    toast.success("Goal added successfully");
     setText("");
   };
   return (

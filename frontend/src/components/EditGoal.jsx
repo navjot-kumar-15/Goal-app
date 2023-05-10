@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { updateGoalData } from "../features/goal/goalSlice";
 function EditGoal() {
   const { id } = useParams();
@@ -15,6 +16,7 @@ function EditGoal() {
     console.log(data);
     dispatch(updateGoalData(data));
     navigate("/");
+    toast.success("Goal updated successfully");
   };
 
   const onHandleChange = (e) => {

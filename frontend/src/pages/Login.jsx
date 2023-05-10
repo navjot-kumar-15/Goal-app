@@ -41,6 +41,7 @@ function Login() {
       password,
     };
     dispatch(login(userData));
+    toast.success("User login successfully");
   };
 
   if (isLoading) {
