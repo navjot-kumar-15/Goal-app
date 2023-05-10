@@ -13,7 +13,7 @@ function GoalItem({ goal }) {
       </button>
       <Link to={`/${goal._id}`}>
         <button className="btn" style={{ margin: "0 auto" }}>
-          Update
+          Edit
         </button>
       </Link>
     </div>

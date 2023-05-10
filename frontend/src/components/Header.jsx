@@ -21,6 +21,11 @@ function Header() {
           <Link to="/">GoalSetter</Link>
         </div>
         <ul>
+          {user && (
+            <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
+              {user.name.toUpperCase()}
+            </span>
+          )}
           {user ? (
             <li>
               <button className="btn" onClick={onLogout}>

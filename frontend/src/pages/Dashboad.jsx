@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import GoalForm from "../components/GoalForm";
-import { getGoals, reset } from "../features/goal/goalSlice";
+import { getGoals } from "../features/goal/goalSlice";
 import Spinner from "../components/Spinner";
 import GoalItem from "../components/GoalItem";
 
@@ -24,9 +24,9 @@ function Dashboad() {
 
     dispatch(getGoals());
 
-    return () => {
-      dispatch(reset());
-    };
+    // return () => {
+    //   // dispatch(reset());
+    // };
   }, [user, dispatch]);
 
   if (isLoading) {

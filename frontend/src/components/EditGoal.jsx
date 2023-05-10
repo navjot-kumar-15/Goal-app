@@ -1,55 +1,63 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Spinner from "./Spinner";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { updateGoalData } from "../features/goal/goalSlice";
 function EditGoal() {
-  const [goal, setGoal] = useState({ text: "" });
-  const { text } = goal;
-
-  const { goals, isError, isLoading, isSuccess, message } = useSelector(
-    (state) => state.goals
-  );
+  const { id } = useParams();
+  const { goals, isSuccess } = useSelector((state) => state.goals);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams();
+  const [data, setData] = useState({});
 
-  const onChange = (e) => {
-    setGoal({ ...goal, [e.target.name]: e.target.value });
-  };
-
-  const onSubmit = () => {
-    if (isSuccess) {
-      // dispatch(updateGoal(id, goals, goal));
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+    dispatch(updateGoalData(data));
     navigate("/");
-    setGoal("");
   };
-  if (isLoading) {
-    return <Spinner />;
-  }
+
+  const onHandleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (id) {
+      const singleUser = goals.filter((ele) => ele._id === id);
+      setData(singleUser[0]);
+    }
+  }, []);
+
   return (
     <>
-      <section className="form">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="text">Goal</label>
-            <input
-              type="text"
-              name="text"
-              id="text"
-              value={text}
-              onChange={(e) => onChange(e)}
-              placeholder="Enter your goals..."
-            />
-          </div>
-          <div className="form-group">
-            <button className="btn btn-block" type="submit">
-              Update Goal
-            </button>
-          </div>
-        </form>
-      </section>
+      <div className="goal">
+        <div>{new Date(data?.createdAt).toLocaleString("en-us")}</div>
+        <input
+          type="text"
+          value={data?.text}
+          name="text"
+          style={{
+            padding: ".5rem",
+            marginBottom: ".6rem",
+            marginTop: ".6rem",
+            fontSize: "1.2rem",
+            outline: "none",
+            border: "none",
+            width: "25vw",
+          }}
+          onChange={onHandleChange}
+        />
+
+        <Link>
+          <button
+            className="btn"
+            style={{ margin: "0 auto" }}
+            onClick={handleSubmit}
+          >
+            Update
+          </button>
+        </Link>
+      </div>
     </>
   );
 }
