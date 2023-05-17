@@ -25,7 +25,10 @@ const setGoal = asyncHandler(async (req, res) => {
   //   text: req.body.text,
   //   user: req.user.id,
   // });
-  const saveGoal = new Goal({ user: req.user.id, text: req.body.text });
+  const saveGoal = new Goal({
+    user: req.user.id,
+    text: req.body.text,
+  });
   await saveGoal.save();
   res.status(200).json(saveGoal);
 });
