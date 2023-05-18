@@ -34,7 +34,6 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log(form);
     const userData = {
       email,
       password,
