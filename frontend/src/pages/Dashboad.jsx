@@ -35,7 +35,7 @@ function Dashboad() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.name} </h1>
+        <h1 className="tracking-in-contract">Welcome {user && user.name} </h1>
         <p>Goals Dashboard</p>
       </section>
       <GoalForm />
@@ -48,7 +48,7 @@ function Dashboad() {
             ))}
           </div>
         ) : (
-          <h3>You have not set any goals</h3>
+          <h3>You dont have any goals</h3>
         )}
       </section>
     </>

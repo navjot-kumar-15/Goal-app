@@ -7,16 +7,21 @@ import { updateGoalData } from "../features/goal/goalSlice";
 import Spinner from "./Spinner";
 function EditGoal() {
   const { id } = useParams();
-  const { goals, isSuccess, isLoading } = useSelector((state) => state.goals);
+  const { goals, isLoading } = useSelector((state) => state.goals);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateGoalData(data));
-    navigate("/");
-    toast.success("Goal updated successfully");
+
+    if (data.length == data.length) {
+      toast.warn("Please do some changes to update");
+    } else {
+      dispatch(updateGoalData(data));
+      navigate("/");
+      toast.success("Goal updated successfully");
+    }
   };
 
   const onHandleChange = (e) => {

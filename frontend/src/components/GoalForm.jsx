@@ -9,15 +9,19 @@ function GoalForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createGoal({ text }));
-    toast.success("Goal added successfully");
-    setText("");
+    if (text.length === 0) {
+      toast.warn("Please enter something...");
+    } else {
+      dispatch(createGoal({ text }));
+      toast.success("Goal added successfully");
+      setText("");
+    }
   };
   return (
     <section className="form">
       <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="text">Enter goal here...</label>
+        <div className="form-group  goalLable">
+          <label htmlFor="text">Enter goal here</label>
           <input
             type="text"
             name="text"

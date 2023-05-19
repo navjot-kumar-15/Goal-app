@@ -1,5 +1,4 @@
 const Goal = require("../model/goalModel");
-const User = require("../model/userModel");
 const asyncHandler = require("express-async-handler");
 
 // @ desc   GET goals
@@ -7,7 +6,6 @@ const asyncHandler = require("express-async-handler");
 //@  access Private
 const getGoal = asyncHandler(async (req, res) => {
   const goal = await Goal.find({ user: req.user.id });
-
   res.status(200).json(goal);
 });
 
