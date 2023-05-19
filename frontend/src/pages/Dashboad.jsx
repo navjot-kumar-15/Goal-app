@@ -23,10 +23,6 @@ function Dashboad() {
     }
 
     dispatch(getGoals());
-
-    // return () => {
-    //   // dispatch(reset());
-    // };
   }, [user, dispatch]);
 
   if (isLoading) {

@@ -28,8 +28,12 @@ function Header() {
           {user && (
             <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
               <div className="userName">
-                <span style={{ marginRight: ".5rem" }}>Hey</span>
-                {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+                <span style={{ marginRight: ".5rem", fontSize: "1.5rem" }}>
+                  Hey
+                </span>
+                <span style={{ fontSize: "1.5rem" }}>
+                  {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+                </span>
               </div>
             </span>
           )}
