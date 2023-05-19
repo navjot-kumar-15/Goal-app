@@ -5,7 +5,6 @@ const dotenv = require("dotenv").config();
 
 const protect = asyncHandler(async (req, res, next) => {
   let token;
-
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -17,7 +16,7 @@ const protect = asyncHandler(async (req, res, next) => {
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      //   Get user from the Token
+      // Get user from the Token
       req.user = await User.findById(decoded.id).select("-password");
       next();
     } catch (error) {

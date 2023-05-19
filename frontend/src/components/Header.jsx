@@ -27,7 +27,10 @@ function Header() {
         <ul>
           {user && (
             <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
-              {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+              <div className="userName">
+                <span style={{ marginRight: ".5rem" }}>Hey</span>
+                {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+              </div>
             </span>
           )}
           {user ? (

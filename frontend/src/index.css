@@ -194,6 +194,19 @@ h3 {
   padding: 1.5rem;
   margin-top: 1rem;
 }
+.userName {
+  background-image: linear-gradient(
+    to right top,
+    #315151,
+    #396165,
+    #42727a,
+    #4d8390,
+    #5994a8
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .header-heading {
   font-size: 1.8rem;
   letter-spacing: 0.2rem;
@@ -211,6 +224,13 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.form input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  margin-top: 0.5rem;
 }
 
 .loadingSpinner {
