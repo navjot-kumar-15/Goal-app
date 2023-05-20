@@ -18,7 +18,7 @@ function Header() {
   };
   return (
     <>
-      <header className="header">
+      <header className="header scale-in-hor-center">
         <div className="logo">
           <Link to="/" className="header-heading">
             GoalSetter
@@ -29,7 +29,7 @@ function Header() {
             <span style={{ fontWeight: "bold", fontSize: "1.3rem" }}>
               <div className="userName">
                 <span style={{ marginRight: ".5rem", fontSize: "1.5rem" }}>
-                  Hey
+                  Hey!
                 </span>
                 <span style={{ fontSize: "1.5rem" }}>
                   {user.name.charAt(0).toUpperCase() + user.name.slice(1)}

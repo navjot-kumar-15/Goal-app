@@ -12,18 +12,22 @@ function EditGoal() {
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
+  // handleSubmit function
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (data.length == data.length) {
-      toast.warn("Please do some changes to update");
-    } else {
+    let updateBtn = document.querySelector(".update");
+    if (data.text.length !== data.text.length) {
       dispatch(updateGoalData(data));
+      updateBtn.style.backgroundColor = "green";
       navigate("/");
       toast.success("Goal updated successfully");
+    } else {
+      toast.warn("Please do some changes to update");
+      updateBtn.style.backgroundColor = "red";
     }
   };
 
+  // onHandleChange function
   const onHandleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -38,7 +42,7 @@ function EditGoal() {
   return (
     <>
       {isLoading && <Spinner />}
-      <div className="goal">
+      <div className="EditGoal">
         <div>{new Date(data?.createdAt).toLocaleString("en-us")}</div>
         <input
           type="text"
@@ -62,7 +66,7 @@ function EditGoal() {
         >
           <Link>
             <button
-              className="btn"
+              className="btn update"
               style={{ margin: "0 auto" }}
               onClick={handleSubmit}
             >

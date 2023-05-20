@@ -90,6 +90,7 @@ h3 {
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
+  overflow: hidden;
 }
 
 .heading p {
@@ -112,7 +113,26 @@ h3 {
   position: relative;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  transition: 0.3s all ease-in-out;
+  /* margin-top: 10rem; */
+}
+.goal:hover,
+.EditGoal:hover {
+  transform: scale(1.1);
+  z-index: 555;
+  cursor: pointer;
+}
+
+.EditGoal {
+  background-color: #f4f4f4;
+  margin: 10px 0;
+  padding: 20px 5px 10px;
+  position: relative;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  transition: 0.3s all ease-in-out;
+  margin-top: 10rem;
 }
 
 .goalLable {
@@ -181,6 +201,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
+  border: none;
 }
 
 .btn svg {
@@ -252,6 +274,37 @@ h3 {
 .bounce-out-top {
   -webkit-animation: bounce-out-top 1.5s both;
   animation: bounce-out-top 1.5s both;
+}
+
+.scale-in-hor-center {
+  -webkit-animation: scale-in-hor-center 0.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: scale-in-hor-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes scale-in-hor-center {
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-hor-center {
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes bounce-out-top {

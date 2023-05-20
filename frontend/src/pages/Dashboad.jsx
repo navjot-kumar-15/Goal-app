@@ -37,7 +37,7 @@ function Dashboad() {
       <GoalForm />
 
       <section className="content">
-        <h2 style={{ margin: "2rem 0 .5rem 0" }}>Your Goals</h2>
+        <h2>Your Goals</h2>
         {goals.length > 0 ? (
           <div className="goals">
             {goals.map((goal) => (
